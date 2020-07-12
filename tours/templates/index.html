@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Stepik Travels</title>
+{% endblock %}
+
+{% block container %}
+
+    <!-- HERO -->
+<style>
+    .JumboHeaderImg{
+    background-image: url("https://images.unsplash.com/photo-1566423471547-2a37c9a39899?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
+    background-size: cover
+
+}
+</style>
+
+    <div class="jumbotron JumboHeaderImg text-center mt-4 ">
+        <h1 class="display-4">Всякие туры</h1>
+      <p class="lead">Для тех, кого отвлекают дома</p>
+      <p class="mt-5 w-50 mx-auto">Лучшие направления,где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами</p>
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">{% for key, value in random_tours.items %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src="{{ value.picture }}"  style="height:200px" class="card-img-top img-fluid" data-test="picture">
+            <div class="card-body">
+              <h5 class="card-title">{{ value.title }}</h5>
+             <p class="card-text" style="height:200px">{{ value.description|truncatewords:38 }} </p>
+                <table width="105%">
+                    <tr style="font-weight:bold"><td>{{ value.date }}, {{ value.nights }} ночей, {{ value.price }} &#8381</td><td>{{ value.stars }} ★</td></tr>
+                </table>
+                <a href="tour/{{ key }}" class="btn btn-sm btn-primary mt-2" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+        </div>{% endfor %}
+    </div>
+
+{% endblock %}

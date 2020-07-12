@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Летим из {{ depart }}</title>
+{% endblock %}
+
+{% block container %}
+
+
+    <h1 class="display-5 mt-4">Летим из <span data-test="from">{{ depart }}</span></h1>
+    <p class="mb-4" >Найдено <span data-test="tourcount">{{ tour_qt }}</span> туров, от <span data-test="price_min">{{ price_min }}</span> до <span data-test="price_max">{{ price_max }}</span> и от <span data-test="nightsmax">{{ nights_min }}</span> ночей до <span data-test="nightsmax">{{ nights_max }}</span> ночей</p>
+    <!-- HERO -->
+
+
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">{% for key, value in tours_depart.items %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src="{{ value.picture }}"  style="height:200px" class="card-img-top img-fluid" data-test="picture">
+            <div class="card-body">
+              <h5 class="card-title">{{ value.title }}</h5>
+             <p class="card-text" style="height:200px">{{ value.description|truncatewords:38 }}</p>
+                <table width="105%">
+                    <tr style="font-weight:bold"><td>{{ value.date }}, {{ value.nights }} ночей, {{ value.price }} &#8381</td><td>{{ value.stars }} ★</td></tr>
+                </table>
+                <a href="/tour/{{ key }}" class="btn btn-sm btn-primary mt-2" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+        </div>{% endfor %}
+    </div>
+
+
+{% endblock %}

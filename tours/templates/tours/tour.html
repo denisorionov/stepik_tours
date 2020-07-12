@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ tours.title }} </title>
+{% endblock %}
+
+{% block container %}
+
+
+    <h1 class="display-3 mt-4" data-test="title"> {{ tours.title }} {{tours.stars}} ★</h1>
+
+    <!-- HERO -->
+
+    <p class="lead" data-test="lead"><span data-test="country">{{ tours.country }}</span> <span data-text="departure">{{ depart }}</span> <span data-text="nights">{{tours.nights}}</span> ночей</p>
+
+    <img data-test="picture" src="{{ tours.picture }}" class="w-75" alt="">
+    
+    <p class="my-4 w-75" data-test="description">{{ tours.description }}</p>
+
+    <a href="https://docs.google.com/forms/d/15Q1dxgdWQYHx7PxHJSbGZvECgrfmWsNI1xBTkBWbkOQ/edit?usp=sharing" class="btn btn-success btn-lg mb-3" data-test="buybutton">Купить тур за <span data-test="price">{{tours.price}}</span></a>
+
+{% endblock %}
